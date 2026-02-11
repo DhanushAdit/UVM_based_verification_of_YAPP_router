@@ -1,0 +1,67 @@
+xrun(64): 22.03-s012: (c) Copyright 1995-2023 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	22.03-s012: Started on Feb 10, 2026 at 16:42:36 CST
+xrun
+	-f run.f
+		-64
+		-uvmhome /opt/coe/cadence/XCELIUM/tools/methodology/UVM/CDNS-1.1d/sv
+		-incdir ../sv
+		../sv/yapp_pkg.sv
+		top.sv
+file: ../sv/yapp_pkg.sv
+  constraint packet_length {length > 0; length < 64; };
+                                                      |
+xmvlog: *W,UEXPSC (../sv/yapp_packet.sv,40|54): Ignored unexpected semicolon following SystemVerilog description keyword (constraint).
+(`include file: ../sv/yapp_packet.sv line 40, file: ../sv/yapp_pkg.sv line 5)
+  constraint packet_address {addr != 'b11;};
+                                           |
+xmvlog: *W,UEXPSC (../sv/yapp_packet.sv,41|43): Ignored unexpected semicolon following SystemVerilog description keyword (constraint).
+(`include file: ../sv/yapp_packet.sv line 41, file: ../sv/yapp_pkg.sv line 5)
+  constraint payload_size {length == payload.size();};
+                                                     |
+xmvlog: *W,UEXPSC (../sv/yapp_packet.sv,42|53): Ignored unexpected semicolon following SystemVerilog description keyword (constraint).
+(`include file: ../sv/yapp_packet.sv line 42, file: ../sv/yapp_pkg.sv line 5)
+  constraint default_delay {packet_delay >= 0; packet_delay <20;};
+                                                                 |
+xmvlog: *W,UEXPSC (../sv/yapp_packet.sv,43|65): Ignored unexpected semicolon following SystemVerilog description keyword (constraint).
+(`include file: ../sv/yapp_packet.sv line 43, file: ../sv/yapp_pkg.sv line 5)
+  constraint default_parity {parity_type dist{BAD_PARITY := 1, GOOD_PARITY := 5};};
+                                                                                  |
+xmvlog: *W,UEXPSC (../sv/yapp_packet.sv,44|82): Ignored unexpected semicolon following SystemVerilog description keyword (constraint).
+(`include file: ../sv/yapp_packet.sv line 44, file: ../sv/yapp_pkg.sv line 5)
+  function void set_parity();
+         |
+xmvlog: *E,EXPIDF (../sv/yapp_packet.sv,54|9): expecting an identifier and found a keyword.
+(`include file: ../sv/yapp_packet.sv line 54, file: ../sv/yapp_pkg.sv line 5)
+  function void post_randomize();
+         |
+xmvlog: *E,EXPIDF (../sv/yapp_packet.sv,62|9): expecting an identifier and found a keyword.
+(`include file: ../sv/yapp_packet.sv line 62, file: ../sv/yapp_pkg.sv line 5)
+endclass: yapp_packet
+       |
+xmvlog: *E,EXPIDF (../sv/yapp_packet.sv,67|7): expecting an identifier and found a keyword.
+(`include file: ../sv/yapp_packet.sv line 67, file: ../sv/yapp_pkg.sv line 5)
+	package worklib.yapp_pkg:sv
+		errors: 3, warnings: 5
+file: top.sv
+module top;
+     |
+xmvlog: *E,NCUITEM (top.sv,9|5): Not a valid compilation unit/global item: 'module/udp instance' [SystemVerilog].
+module top;
+     |
+xmvlog: *E,EXPLPA (top.sv,9|5): expecting a left parenthesis ('(') [12.1.2][7.1(IEEE)].
+import yapp_pkg::*;
+              |
+xmvlog: *E,NOPBIND (top.sv,19|14): Package yapp_pkg could not be bound.
+yapp_packet packet;
+          |
+xmvlog: *E,SVNOTY (top.sv,24|10): Syntactically this identifier appears to begin a datatype but it does not refer to a visible datatype in the current scope.
+int ok;
+  |
+xmvlog: *E,BADDCL (top.sv,28|2): identify declaration while expecting a statement.
+	module worklib.top:sv
+		errors: 3, warnings: 0
+xmvlog: *W,NOTOPL: no top-level unit found, must have recursive instances.
+	Total errors/warnings found outside modules and primitives:
+		errors: 2, warnings: 1
+xrun: *E,VLGERR: An error occurred during parsing.  Review the log file for errors with the code *E and fix those identified problems to proceed.  Exiting with code (status 1).
+TOOL:	xrun(64)	22.03-s012: Exiting on Feb 10, 2026 at 16:42:38 CST  (total: 00:00:02)
