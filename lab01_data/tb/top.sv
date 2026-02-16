@@ -6,7 +6,7 @@ Notes         : From the Cadence "SystemVerilog Advanced Verification with UVM" 
 Copyright Cadence Design Systems (c)2015
 -----------------------------------------------------------------*/
 
-module top;
+module top();
 // import the UVM library
 import uvm_pkg::*;
 
@@ -14,18 +14,18 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 
 
-uvm_table_printer custom = new();
 // import the YAPP package
 import yapp_pkg::*;
+uvm_table_printer custom = new();
 
 initial begin
 
 //instantiating yapp_packet
 yapp_packet packet;
-
+int ok;
 //constructing the yapp_packet
 packet = new("packet");
-int ok;
+
 // generate 5 random packets and use the print method
 // to display the results
 for(int i =0; i <5 ; i++) begin

@@ -4,4 +4,4 @@ import uvm_pkg::*;
 `include "uvm_macros.svh"
 `include "yapp_packet.sv"
 
-endpackage yapp_pkg
+endpackage : yapp_pkg

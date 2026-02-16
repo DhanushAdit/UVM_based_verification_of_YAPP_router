@@ -49,7 +49,7 @@ class yapp_packet extends uvm_sequence_item;
     calc_parity = {length, addr};
     foreach(payload[i])
       calc_parity = calc_parity ^ payload[i];
-  endfunction calc_parity
+  endfunction : calc_parity
 
   function void set_parity();
     parity = calc_parity;
@@ -57,11 +57,11 @@ class yapp_packet extends uvm_sequence_item;
       parity++;
     else
       parity_type = BAD_PARITY;
-  endfunction set_parity
+  endfunction : set_parity
 
   function void post_randomize();
     set_parity();
-  endfunction post_randomize
+  endfunction : post_randomize
 
 
 endclass: yapp_packet
