@@ -15,7 +15,7 @@ Copyright Cadence Design Systems (c)2015
 //
 //------------------------------------------------------------------------------
 class yapp_base_seq extends uvm_sequence #(yapp_packet);
-  
+  //yapp_packeet is like a data type of the sequence.
   // Required macro for sequences automation
   `uvm_object_utils(yapp_base_seq)
 
