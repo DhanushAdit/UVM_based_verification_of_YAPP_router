@@ -27,15 +27,15 @@ yapp_packet packet;
 int ok;
 //constructing the yapp_packet
 packet = new("packet");
-run_test();
+
 // generate 5 random packets and use the print method
 // to display the results
 for(int i = 0; i < 5; i++) begin
     packet = new($sformatf("packet_%0d", i));  // unique name per packet
     ok = packet.randomize();
-    packet.print(custom);
+    packet.print();
 end
 // experiment with the copy, clone and compare UVM method
-
+run_test();
 end
 endmodule : top

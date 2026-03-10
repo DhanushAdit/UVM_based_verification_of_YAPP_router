@@ -36,7 +36,7 @@ class yapp_packet extends uvm_sequence_item;
   function new (string name = "yapp_packet");
     super.new(name);
   endfunction
-  // Define packet constraints
+  // Default packet constraints, we can later change them in the sequesnces and using the factory..
   constraint packet_length {length > 0; length < 64; }
   constraint packet_address {addr != 'b11;}
   constraint payload_size {length == payload.size();}
@@ -55,8 +55,6 @@ class yapp_packet extends uvm_sequence_item;
     parity = calc_parity;
     if (parity_type == BAD_PARITY)
       parity++;
-    else
-      parity_type = BAD_PARITY;
   endfunction : set_parity
 
   function void post_randomize();
@@ -77,3 +75,15 @@ class short_yapp_packet extends yapp_packet;
     constraint short_packet_length {length < 15;}
     constraint short_packet_address {addr != 2;}
 endclass : short_yapp_packet
+
+
+class long_packet_test extends yapp_packet;
+    `uvm_object_utils(long_packet_test)
+
+    function new(string name = "long_packet_test");
+        super.new(name);
+    endfunction : new
+
+    constraint long_packet_length {length > 15;}
+    constraint long_packet_address {addr != 0;}
+endclass : long_packet_test
